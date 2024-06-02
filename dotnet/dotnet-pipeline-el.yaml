@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: dotnet-pipeline-el
+  namespace: tekton-pipelines
+spec:
+  serviceAccountName: dotnet-tekton-sa
+  # triggers:
+  #   - name: dotnet-pipeline-trigger
+  #     bindings:
+  #       - ref: dotnet-pipeline-binding
+  #     template:
+  #       name: dotnet-pipeline
+  resources:
+    kubernetesResource:
+      serviceType: NodePort
+      servicePort: 8080
